@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wärmepumpen-Rechner v2 | Fördercheck & Kostenabschätzung</title>
-  <meta name="description" content="Berechnen Sie in 60 Sekunden den Wärmepumpen-Preisrahmen, Förderpotenzial und Ihre mögliche Ersparnis. Mit klarem Fördercheck und unverbindlicher Beratung." />
+  <title>Wärmepumpen-Rechner 2026 | Kosten, Förderung & Vergleich</title>
+  <meta name="description" content="Kostenrahmen, Förderpotenzial und jährliche Ersparnis für Ihre Wärmepumpe in unter 2 Minuten berechnen. Mit Rechner, Vergleich und FAQ für Eigentümer in Deutschland." />
   <link rel="canonical" href="https://waermepumpe-rechner-v2.vercel.app/" />
   <meta name="robots" content="index,follow" />
-  <meta property="og:title" content="Wärmepumpen-Rechner v2 | Fördercheck & Kostenabschätzung" />
-  <meta property="og:description" content="Schneller Fördercheck + Preisrahmen für Ihre Wärmepumpe." />
+  <meta property="og:title" content="Wärmepumpen-Rechner 2026 | Kosten, Förderung & Vergleich" />
+  <meta property="og:description" content="Wärmepumpen-Kosten, Förderkorridor und Einsparpotenzial direkt online berechnen." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://waermepumpe-rechner-v2.vercel.app/" />
   <meta property="og:locale" content="de_DE" />
@@ -34,30 +34,30 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: radial-gradient(1200px 600px at 80% 0%, #eaf0ff 0%, rgba(234,240,255,0) 60%), var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .container { width: min(var(--max), 92vw); margin: 0 auto; }
-    h1,h2,h3 { letter-spacing: -.03em; margin: 0; line-height: 1.1; }
+    h1,h2,h3 { letter-spacing: -.03em; margin: 0; line-height: 1.12; }
     p { margin: 0; color: var(--muted); }
 
-    .section { padding: 84px 0; }
+    .section { padding: 80px 0; }
 
-    .hero { padding: 48px 0 40px; }
+    .hero { padding: 52px 0 44px; }
     .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr .95fr;
-      gap: 38px;
+      gap: 34px;
       align-items: center;
     }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
       background: rgba(255,255,255,.75); font-size: 12px; text-transform: uppercase;
-      letter-spacing: .12em; color: #354152; margin-bottom: 22px;
+      letter-spacing: .12em; color: #354152; margin-bottom: 20px;
     }
-    .hero h1 { font-size: clamp(2.1rem, 6vw, 4.2rem); margin-bottom: 18px; }
-    .hero p.lead { font-size: clamp(1.04rem, 2vw, 1.24rem); max-width: 640px; }
-    .hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero h1 { font-size: clamp(2.05rem, 6vw, 4rem); margin-bottom: 16px; }
+    .hero p.lead { font-size: clamp(1.03rem, 1.8vw, 1.18rem); max-width: 640px; }
+    .hero-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
 
     .btn {
       border: 1px solid transparent;
@@ -78,32 +78,32 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
-      padding: 26px;
+      padding: 24px;
     }
-    .hero-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
-    .mini-row { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding: 11px 0; font-size: 14px; }
+    .hero-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+    .mini-row { display: flex; justify-content: space-between; gap: 14px; border-top: 1px solid var(--line); padding: 11px 0; font-size: 14px; }
     .mini-row:first-of-type { border-top: 0; }
-    .metric { color: var(--text); font-weight: 600; }
+    .metric { color: var(--text); font-weight: 600; text-align: right; }
 
     .trust-strip {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       background: rgba(255,255,255,.55);
     }
-    .trust-wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; padding: 20px 0; }
-    .trust-item { text-align: center; color: #435266; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; }
+    .trust-wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; padding: 18px 0; }
+    .trust-item { text-align: center; color: #435266; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
 
-    .section-head { max-width: 760px; margin-bottom: 34px; }
-    .section-head h2 { font-size: clamp(1.8rem, 4.2vw, 3rem); margin-bottom: 10px; }
+    .section-head { max-width: 760px; margin-bottom: 30px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 10px; }
 
     .benefit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
     .benefit {
       background: var(--surface-strong);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
     }
-    .benefit h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .benefit h3 { font-size: 1.14rem; margin-bottom: 8px; }
 
     .calc-wrap {
       display: grid;
@@ -119,21 +119,35 @@
     }
     .form-grid { display: grid; gap: 14px; }
     label { font-size: 13px; font-weight: 600; color: #344054; }
-    input, select, textarea {
+    input, select {
       width: 100%;
       margin-top: 7px;
       border: 1px solid #d6dde8;
       border-radius: 12px;
-      padding: 12px 12px;
+      padding: 12px;
       font: inherit;
       color: #0f172a;
       background: #fff;
     }
-    textarea { min-height: 90px; resize: vertical; }
 
-    .result-item { border-top: 1px solid var(--line); padding: 12px 0; display: flex; justify-content: space-between; }
+    .result-item { border-top: 1px solid var(--line); padding: 12px 0; display: flex; justify-content: space-between; gap: 14px; }
     .result-item:first-child { border-top: 0; }
-    .big { font-size: 1.2rem; font-weight: 700; color: #0b1324; }
+    .big { font-size: 1.2rem; font-weight: 700; color: #0b1324; text-align: right; }
+
+    .ad-slot {
+      border: 1px dashed #c6d2e2;
+      border-radius: 14px;
+      background: #f8fbff;
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #516074;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 16px;
+    }
 
     .method-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .method-step { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
@@ -148,23 +162,22 @@
       border: 1px solid var(--line);
       border-radius: 24px;
       background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(242,246,255,.9));
-      padding: 30px;
+      padding: 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     footer { padding: 30px 0 44px; border-top: 1px solid var(--line); font-size: 14px; color: #607086; }
-
-    .status { font-size: 13px; margin-top: 8px; }
 
     @media (max-width: 980px) {
       .hero-grid, .calc-wrap { grid-template-columns: 1fr; }
       .benefit-grid, .method-grid { grid-template-columns: 1fr; }
       .trust-wrap { grid-template-columns: repeat(2,1fr); }
-      .section { padding: 64px 0; }
+      .section { padding: 62px 0; }
       .cta-band { flex-direction: column; align-items: flex-start; }
+      .ad-slot { min-height: 90px; }
     }
   </style>
   <script type="application/ld+json">
@@ -175,7 +188,7 @@
       {
         "@type":"Question",
         "name":"Wie genau ist der Wärmepumpen-Rechner?",
-        "acceptedAnswer":{"@type":"Answer","text":"Der Rechner liefert eine belastbare Erstabschätzung auf Basis von Gebäudetyp, Wohnfläche, Sanierungsstand und Heizsystem. Für ein finales Angebot prüfen Fachpartner die Situation vor Ort."}
+        "acceptedAnswer":{"@type":"Answer","text":"Der Rechner liefert eine belastbare Erstabschätzung auf Basis von Gebäudetyp, Wohnfläche, Sanierungsstand und Heizsystem. Für eine finale Planung sind Vor-Ort-Daten und technische Prüfung erforderlich."}
       },
       {
         "@type":"Question",
@@ -184,8 +197,8 @@
       },
       {
         "@type":"Question",
-        "name":"Ist die Anfrage unverbindlich?",
-        "acceptedAnswer":{"@type":"Answer","text":"Ja, die Anfrage ist unverbindlich. Ihre Daten werden ausschließlich zur Angebots- und Förderberatung verwendet."}
+        "name":"Ist der Rechner kostenlos nutzbar?",
+        "acceptedAnswer":{"@type":"Answer","text":"Ja, der Rechner ist kostenlos und ohne Registrierung nutzbar. Die Ergebnisse dienen als Orientierung für Ihre weitere Planung."}
       }
     ]
   }
@@ -195,12 +208,13 @@
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="eyebrow">Wärmepumpen-Rechner v2 · Fördercheck</div>
+        <div class="eyebrow">Wärmepumpen-Rechner 2026 · Fördercheck</div>
         <h1>Ihr klarer Kosten- und Förderrahmen für die neue Wärmepumpe.</h1>
         <p class="lead">In unter 2 Minuten sehen Sie, mit welchem Investitionsrahmen Sie rechnen können, welche Förderung realistisch ist und welche Einsparung im Betrieb möglich wird.</p>
         <div class="hero-actions">
-          <a href="#rechner" class="btn primary">Jetzt berechnen</a>
-          <a href="#kontakt" class="btn secondary">Beratung anfragen</a>
+          <a href="#rechner" class="btn primary">Rechner starten</a>
+          <a href="#foerderung" class="btn secondary">Förderung prüfen</a>
+          <a href="#vergleich" class="btn secondary">Vergleich ansehen</a>
         </div>
       </div>
       <aside class="glass-card hero-card">
@@ -208,7 +222,7 @@
         <div class="mini-row"><span>Durchschnittlicher Invest (brutto)</span><strong class="metric">24.000–38.000 €</strong></div>
         <div class="mini-row"><span>Möglicher Förderrahmen</span><strong class="metric">30–55 %</strong></div>
         <div class="mini-row"><span>Typische Heizkostenreduktion</span><strong class="metric">20–45 %</strong></div>
-        <div class="mini-row"><span>Erstberatung</span><strong class="metric">Unverbindlich</strong></div>
+        <div class="mini-row"><span>Nutzbar ohne Registrierung</span><strong class="metric">Sofort online</strong></div>
       </aside>
     </div>
   </header>
@@ -217,7 +231,7 @@
     <div class="container trust-wrap">
       <div class="trust-item">Förderlogik integriert</div>
       <div class="trust-item">Transparente Methodik</div>
-      <div class="trust-item">Datensparsame Anfrage</div>
+      <div class="trust-item">Kostenfrei nutzbar</div>
       <div class="trust-item">Vercel-ready Setup</div>
     </div>
   </section>
@@ -226,26 +240,33 @@
     <div class="container">
       <div class="section-head">
         <h2>Wofür der Rechner gemacht ist</h2>
-        <p>Kein unübersichtlicher Baukasten: klare Struktur mit Nutzenfokus – von der Ersteinschätzung bis zur konkreten Anfrage.</p>
+        <p>Klare Struktur mit direktem Nutzen: Kostenrahmen einschätzen, Förderwirkung verstehen und technische Optionen vergleichen.</p>
       </div>
       <div class="benefit-grid">
         <article class="benefit">
           <h3>1) Investitionsrahmen</h3>
           <p>Sie sehen einen realistischen Korridor für Anschaffung & Installation – passend zu Fläche, Gebäudeart und Systemwahl.</p>
         </article>
-        <article class="benefit">
+        <article class="benefit" id="foerderung">
           <h3>2) Fördercheck</h3>
-          <p>Der Rechner ergänzt Ihren Brutto-Rahmen um mögliche Förderanteile und zeigt den zu erwartenden Netto-Aufwand.</p>
+          <p>Der Rechner ergänzt den Brutto-Rahmen um mögliche Förderanteile und zeigt den erwartbaren Netto-Aufwand.</p>
         </article>
-        <article class="benefit">
-          <h3>3) Nächster Schritt</h3>
-          <p>Über das Formular schicken Sie Ihre Daten direkt an den Lead-Endpunkt für die unverbindliche Experteneinschätzung.</p>
+        <article class="benefit" id="vergleich">
+          <h3>3) Vergleichshilfe</h3>
+          <p>Luft-Wasser und Sole-Wasser lassen sich über Kosten- und Einsparungswirkung direkt gegenüberstellen.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="rechner" class="section" style="padding-top:36px;">
+  <!-- AD PLACEHOLDER: In-content slot after intro section -->
+  <section class="section" style="padding-top:0;padding-bottom:30px;">
+    <div class="container">
+      <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 1">Anzeige (Platzhalter · In-Content)</div>
+    </div>
+  </section>
+
+  <section id="rechner" class="section" style="padding-top:30px;">
     <div class="container calc-wrap">
       <div class="panel">
         <div class="section-head" style="margin-bottom:20px">
@@ -294,15 +315,23 @@
     </div>
   </section>
 
+  <!-- AD PLACEHOLDER: Mid-content slot below calculator -->
+  <section class="section" style="padding-top:8px;padding-bottom:24px;">
+    <div class="container">
+      <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 2">Anzeige (Platzhalter · Nach dem Rechner)</div>
+    </div>
+  </section>
+
   <section class="section" style="padding-top:20px;">
     <div class="container">
       <div class="section-head">
         <h2>Methodik & Nachvollziehbarkeit</h2>
+        <p>Die Kennzahlen basieren auf typischen Marktspannen und dienen als strukturierte Erstorientierung für Eigentümer.</p>
       </div>
       <div class="method-grid">
         <div class="method-step"><span class="num">1</span><h3>Eingabedaten</h3><p>Gebäudetyp, Fläche, Systemwahl und aktuelles Heizsystem steuern die Kostenspanne.</p></div>
         <div class="method-step"><span class="num">2</span><h3>Förderkorridor</h3><p>Je nach Konstellation wird ein prozentualer Förderkorridor auf den Bruttobetrag angewendet.</p></div>
-        <div class="method-step"><span class="num">3</span><h3>Netto & Betrieb</h3><p>Der Netto-Rahmen und eine grobe Einsparung p.a. helfen bei der ersten Entscheidungsbasis.</p></div>
+        <div class="method-step"><span class="num">3</span><h3>Netto & Betrieb</h3><p>Der Netto-Rahmen und eine grobe Einsparung p.a. helfen bei einer fundierten Erstentscheidung.</p></div>
       </div>
     </div>
   </section>
@@ -314,44 +343,47 @@
       </div>
       <div class="faq">
         <details>
-          <summary>Wie schnell bekomme ich ein konkretes Angebot?</summary>
-          <p>Nach Absenden der Anfrage erhalten Sie in der Regel innerhalb von 24–48 Stunden eine Rückmeldung zur nächsten Detailprüfung.</p>
+          <summary>Wie schnell bekomme ich ein konkretes Angebot von einem Fachbetrieb?</summary>
+          <p>Der Rechner selbst erstellt kein Angebot, liefert aber eine solide Entscheidungsbasis. Für konkrete Angebote sollten Sie lokale Fachbetriebe mit den Ergebnissen vergleichen.</p>
         </details>
         <details>
           <summary>Ist der Rechner auch für Altbauten sinnvoll?</summary>
           <p>Ja. Gerade im Bestand hilft der Rechner, die Größenordnung und Förderwirkung vorab realistisch einzuordnen.</p>
         </details>
         <details>
-          <summary>Welche Daten werden beim Lead-Formular übertragen?</summary>
-          <p>Name, E-Mail, Telefon (optional), Ziel/Anliegen sowie technische Eingaben aus dem Rechner für die Erstbewertung.</p>
+          <summary>Welche Daten werden gespeichert?</summary>
+          <p>Es werden nur die von Ihnen eingegebenen Rechendaten im Browser verarbeitet. Es erfolgt keine automatische Übertragung an einen Lead- oder Kontakt-Endpunkt.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <section id="kontakt" class="section" style="padding-top:8px;">
+  <!-- AD PLACEHOLDER: Bottom slot before footer -->
+  <section class="section" style="padding-top:0;padding-bottom:30px;">
+    <div class="container">
+      <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 3">Anzeige (Platzhalter · Footer-nah)</div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:8px;">
     <div class="container">
       <div class="cta-band">
         <div>
-          <h2 style="font-size:clamp(1.4rem,3vw,2.1rem);margin-bottom:8px;">Unverbindliche Förder- und Projektberatung anfragen</h2>
-          <p>Wir prüfen Ihren Fall individuell und melden uns mit den nächsten sinnvollen Schritten.</p>
+          <h2 style="font-size:clamp(1.3rem,3vw,2rem);margin-bottom:8px;">Nächster Schritt: mit den Ergebnissen weiterplanen</h2>
+          <p>Nutzen Sie die Werte aus dem Rechner für Ihren Förderabgleich und den Vergleich von Fachbetriebsangeboten.</p>
         </div>
-        <form id="leadForm" style="display:grid;gap:10px;min-width:min(430px,100%);width:min(430px,100%);">
-          <input type="text" name="name" placeholder="Name" required>
-          <input type="email" name="email" placeholder="E-Mail" required>
-          <input type="text" name="phone" placeholder="Telefon (optional)">
-          <textarea name="goal" placeholder="Ihr Ziel / Hinweis" required></textarea>
-          <button class="btn primary" type="submit">Anfrage senden</button>
-          <div id="leadStatus" class="status" aria-live="polite"></div>
-        </form>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="#rechner" class="btn primary">Rechner erneut starten</a>
+          <a href="#foerderung" class="btn secondary">Förderung prüfen</a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-      <span>© 2026 Wärmepumpen-Rechner v2</span>
-      <span>Minimal, robust, Vercel-ready</span>
+      <span>© 2026 Wärmepumpen-Rechner</span>
+      <span>Content-first, leichtgewichtig, Vercel-ready</span>
     </div>
   </footer>
 
@@ -389,61 +421,10 @@
       output.grant.textContent = EUR.format(grant);
       output.net.textContent = EUR.format(net);
       output.save.textContent = EUR.format(annualSave);
-
-      return { gross, grant, net, annualSave, size, building: fields.building.value, system: fields.system.value, replace: fields.replace.value };
     }
 
     Object.values(fields).forEach(el => el.addEventListener('input', calculate));
-    const initialData = calculate();
-
-    const leadForm = document.getElementById('leadForm');
-    const leadStatus = document.getElementById('leadStatus');
-
-    leadForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(leadForm);
-      const calcData = calculate();
-
-      const payload = {
-        name: String(formData.get('name') || '').trim(),
-        email: String(formData.get('email') || '').trim(),
-        phone: String(formData.get('phone') || '').trim(),
-        goal: String(formData.get('goal') || '').trim(),
-        source_url: window.location.href,
-        calculator: calcData
-      };
-
-      if (!payload.name || !payload.email || !payload.goal) {
-        leadStatus.textContent = 'Bitte Name, E-Mail und Ziel ausfüllen.';
-        leadStatus.style.color = '#b42318';
-        return;
-      }
-
-      leadStatus.textContent = 'Sende Anfrage…';
-      leadStatus.style.color = '#475467';
-
-      try {
-        const response = await fetch('/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok || !data.ok) {
-          throw new Error(data?.message || 'Senden fehlgeschlagen');
-        }
-
-        leadStatus.textContent = 'Danke! Wir melden uns kurzfristig bei Ihnen.';
-        leadStatus.style.color = '#067647';
-        leadForm.reset();
-        fields.size.value = initialData.size;
-        calculate();
-      } catch (err) {
-        leadStatus.textContent = 'Aktuell gab es ein Problem. Bitte später erneut versuchen.';
-        leadStatus.style.color = '#b42318';
-      }
-    });
+    calculate();
   </script>
 </body>
 </html>

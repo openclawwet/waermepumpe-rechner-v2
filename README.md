@@ -5,8 +5,9 @@ Premium rebuild of the Wärmepumpen Rechner landing page (Orion-inspired structu
 - trust strip
 - structured benefit sections
 - calculator centerpiece
-- methodik + FAQ + CTA
-- lead form posting to `/api/lead`
+- methodik + FAQ + utility CTA
+- ad-ready in-content placeholder slots (non-intrusive)
+- no lead-capture dependency (static-first)
 
 ## Local
 Open `index.html` directly for static preview.
@@ -16,6 +17,5 @@ Open `index.html` directly for static preview.
 vercel --prod
 ```
 
-## Required env for API
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
+## API note
+`api/lead.js` is legacy and currently unused by `index.html`.
