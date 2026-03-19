@@ -15,7 +15,7 @@
   <style>
     :root {
       --bg: #f6f8fb;
-      --surface: rgba(255, 255, 255, 0.78);
+      --surface: rgba(255, 255, 255, 0.82);
       --surface-strong: #ffffff;
       --text: #101828;
       --muted: #526071;
@@ -25,11 +25,11 @@
       --radius-xl: 32px;
       --radius-lg: 20px;
       --shadow: 0 24px 48px rgba(16, 24, 40, .08);
-      --max: 1180px;
+      --max: 1500px;
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: radial-gradient(1200px 600px at 80% 0%, #eaf0ff 0%, rgba(234,240,255,0) 60%), var(--bg);
@@ -39,10 +39,47 @@
     .container { width: min(var(--max), 92vw); margin: 0 auto; }
     h1,h2,h3 { letter-spacing: -.03em; margin: 0; line-height: 1.12; }
     p { margin: 0; color: var(--muted); }
+    a { color: inherit; }
 
     .section { padding: 80px 0; }
 
-    .hero { padding: 52px 0 44px; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 16px;
+    }
+    .brand { font-weight: 800; color: #0b1324; text-decoration: none; }
+    .site-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    .site-nav a {
+      text-decoration: none;
+      color: #1f3148;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    .site-nav a:hover { background: #eef4ff; }
+
+    .hero {
+      padding: 70px 0 56px;
+      position: relative;
+      overflow: hidden;
+      background-image:
+        linear-gradient(120deg, rgba(8, 15, 30, .88) 0%, rgba(8, 15, 30, .76) 42%, rgba(12, 23, 42, .64) 100%),
+        url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=2400&q=80');
+      background-size: cover;
+      background-position: center;
+    }
     .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr .95fr;
@@ -51,12 +88,12 @@
     }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
-      background: rgba(255,255,255,.75); font-size: 12px; text-transform: uppercase;
-      letter-spacing: .12em; color: #354152; margin-bottom: 20px;
+      padding: 8px 14px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px;
+      background: rgba(255,255,255,.1); font-size: 12px; text-transform: uppercase;
+      letter-spacing: .12em; color: #f4f7ff; margin-bottom: 20px;
     }
-    .hero h1 { font-size: clamp(2.05rem, 6vw, 4rem); margin-bottom: 16px; }
-    .hero p.lead { font-size: clamp(1.03rem, 1.8vw, 1.18rem); max-width: 640px; }
+    .hero h1 { font-size: clamp(2.05rem, 6vw, 4rem); margin-bottom: 16px; color: #ffffff; }
+    .hero p.lead { font-size: clamp(1.03rem, 1.8vw, 1.18rem); max-width: 720px; color: #e6ecfb; }
     .hero-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
 
     .btn {
@@ -69,11 +106,11 @@
       display: inline-flex; align-items: center; justify-content: center;
       cursor: pointer;
     }
-    .btn.primary { background: var(--primary); color: #fff; }
-    .btn.secondary { background: rgba(255,255,255,.75); color: var(--primary); border-color: var(--line); backdrop-filter: blur(14px); }
+    .btn.primary { background: #ffffff; color: #0f172a; }
+    .btn.secondary { background: rgba(255,255,255,.15); color: #ffffff; border-color: rgba(255,255,255,.35); backdrop-filter: blur(14px); }
 
     .glass-card {
-      background: var(--surface);
+      background: rgba(255,255,255,.9);
       border: 1px solid rgba(255,255,255,.95);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
@@ -169,7 +206,11 @@
       gap: 16px;
     }
 
-    footer { padding: 30px 0 44px; border-top: 1px solid var(--line); font-size: 14px; color: #607086; }
+    footer { padding: 32px 0 44px; border-top: 1px solid var(--line); font-size: 14px; color: #607086; }
+    .footer-top { display:flex; justify-content:space-between; gap:16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .footer-links { display:flex; flex-wrap:wrap; gap:14px; }
+    .footer-links a { color:#1f3a5b; text-decoration:none; font-weight:600; }
+    .footer-links a:hover { text-decoration:underline; }
 
     @media (max-width: 980px) {
       .hero-grid, .calc-wrap { grid-template-columns: 1fr; }
@@ -178,6 +219,9 @@
       .section { padding: 62px 0; }
       .cta-band { flex-direction: column; align-items: flex-start; }
       .ad-slot { min-height: 90px; }
+      .site-header .container { min-height: auto; padding: 10px 0; flex-direction: column; align-items: flex-start; }
+      .site-nav { gap: 6px; }
+      .site-nav a { padding: 6px 10px; }
     }
   </style>
   <script type="application/ld+json">
@@ -205,185 +249,204 @@
   </script>
 </head>
 <body>
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Wärmepumpen-Rechner 2026 · Fördercheck</div>
-        <h1>Ihr klarer Kosten- und Förderrahmen für die neue Wärmepumpe.</h1>
-        <p class="lead">In unter 2 Minuten sehen Sie, mit welchem Investitionsrahmen Sie rechnen können, welche Förderung realistisch ist und welche Einsparung im Betrieb möglich wird.</p>
-        <div class="hero-actions">
-          <a href="#rechner" class="btn primary">Rechner starten</a>
-          <a href="#foerderung" class="btn secondary">Förderung prüfen</a>
-          <a href="#vergleich" class="btn secondary">Vergleich ansehen</a>
-        </div>
-      </div>
-      <aside class="glass-card hero-card">
-        <h3>Schnellcheck auf einen Blick</h3>
-        <div class="mini-row"><span>Durchschnittlicher Invest (brutto)</span><strong class="metric">24.000–38.000 €</strong></div>
-        <div class="mini-row"><span>Möglicher Förderrahmen</span><strong class="metric">30–55 %</strong></div>
-        <div class="mini-row"><span>Typische Heizkostenreduktion</span><strong class="metric">20–45 %</strong></div>
-        <div class="mini-row"><span>Nutzbar ohne Registrierung</span><strong class="metric">Sofort online</strong></div>
-      </aside>
+  <header class="site-header" aria-label="Hauptnavigation">
+    <div class="container">
+      <a class="brand" href="#top">Wärmepumpen-Rechner</a>
+      <nav class="site-nav">
+        <a href="#rechner">Rechner</a>
+        <a href="#foerderung">Förderung</a>
+        <a href="#vergleich">Vergleich</a>
+        <a href="#methodik">Methodik</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </div>
   </header>
 
-  <section class="trust-strip">
-    <div class="container trust-wrap">
-      <div class="trust-item">Förderlogik integriert</div>
-      <div class="trust-item">Transparente Methodik</div>
-      <div class="trust-item">Kostenfrei nutzbar</div>
-      <div class="trust-item">Vercel-ready Setup</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Wofür der Rechner gemacht ist</h2>
-        <p>Klare Struktur mit direktem Nutzen: Kostenrahmen einschätzen, Förderwirkung verstehen und technische Optionen vergleichen.</p>
-      </div>
-      <div class="benefit-grid">
-        <article class="benefit">
-          <h3>1) Investitionsrahmen</h3>
-          <p>Sie sehen einen realistischen Korridor für Anschaffung & Installation – passend zu Fläche, Gebäudeart und Systemwahl.</p>
-        </article>
-        <article class="benefit" id="foerderung">
-          <h3>2) Fördercheck</h3>
-          <p>Der Rechner ergänzt den Brutto-Rahmen um mögliche Förderanteile und zeigt den erwartbaren Netto-Aufwand.</p>
-        </article>
-        <article class="benefit" id="vergleich">
-          <h3>3) Vergleichshilfe</h3>
-          <p>Luft-Wasser und Sole-Wasser lassen sich über Kosten- und Einsparungswirkung direkt gegenüberstellen.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- AD PLACEHOLDER: In-content slot after intro section -->
-  <section class="section" style="padding-top:0;padding-bottom:30px;">
-    <div class="container">
-      <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 1">Anzeige (Platzhalter · In-Content)</div>
-    </div>
-  </section>
-
-  <section id="rechner" class="section" style="padding-top:30px;">
-    <div class="container calc-wrap">
-      <div class="panel">
-        <div class="section-head" style="margin-bottom:20px">
-          <h2>Wärmepumpen-Rechner</h2>
-          <p>Geben Sie Ihre Eckdaten an. Die Berechnung aktualisiert sich direkt.</p>
-        </div>
-        <form id="calcForm" class="form-grid" novalidate>
-          <div>
-            <label for="building">Gebäudetyp</label>
-            <select id="building" name="building">
-              <option value="bestand">Bestandsbau</option>
-              <option value="teilsaniert">Teilsaniert</option>
-              <option value="neubau">Neubau</option>
-            </select>
-          </div>
-          <div>
-            <label for="size">Wohnfläche (m²)</label>
-            <input id="size" name="size" type="number" min="50" max="450" value="150" />
-          </div>
-          <div>
-            <label for="system">Wärmepumpen-System</label>
-            <select id="system" name="system">
-              <option value="luft">Luft-Wasser</option>
-              <option value="sole">Sole-Wasser</option>
-            </select>
-          </div>
-          <div>
-            <label for="replace">Ersetzt wird</label>
-            <select id="replace" name="replace">
-              <option value="gas">Gasheizung</option>
-              <option value="oel">Ölheizung</option>
-              <option value="alt">Andere Altanlage</option>
-            </select>
-          </div>
-        </form>
-      </div>
-
-      <aside class="glass-card">
-        <h3 style="margin:0 0 14px;font-size:1.35rem;">Ihr Ergebnis</h3>
-        <div class="result-item"><span>Brutto-Investitionsrahmen</span><strong id="gross" class="big">-</strong></div>
-        <div class="result-item"><span>Mögliche Förderung</span><strong id="grant" class="big">-</strong></div>
-        <div class="result-item"><span>Netto-Rahmen</span><strong id="net" class="big">-</strong></div>
-        <div class="result-item"><span>Jährliche Einsparung (Schätzung)</span><strong id="save" class="big">-</strong></div>
-        <p style="font-size:13px;margin-top:8px;">Hinweis: Orientierungshilfe, kein verbindliches Angebot.</p>
-      </aside>
-    </div>
-  </section>
-
-  <!-- AD PLACEHOLDER: Mid-content slot below calculator -->
-  <section class="section" style="padding-top:8px;padding-bottom:24px;">
-    <div class="container">
-      <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 2">Anzeige (Platzhalter · Nach dem Rechner)</div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:20px;">
-    <div class="container">
-      <div class="section-head">
-        <h2>Methodik & Nachvollziehbarkeit</h2>
-        <p>Die Kennzahlen basieren auf typischen Marktspannen und dienen als strukturierte Erstorientierung für Eigentümer.</p>
-      </div>
-      <div class="method-grid">
-        <div class="method-step"><span class="num">1</span><h3>Eingabedaten</h3><p>Gebäudetyp, Fläche, Systemwahl und aktuelles Heizsystem steuern die Kostenspanne.</p></div>
-        <div class="method-step"><span class="num">2</span><h3>Förderkorridor</h3><p>Je nach Konstellation wird ein prozentualer Förderkorridor auf den Bruttobetrag angewendet.</p></div>
-        <div class="method-step"><span class="num">3</span><h3>Netto & Betrieb</h3><p>Der Netto-Rahmen und eine grobe Einsparung p.a. helfen bei einer fundierten Erstentscheidung.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:20px;">
-    <div class="container">
-      <div class="section-head">
-        <h2>Häufige Fragen</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>Wie schnell bekomme ich ein konkretes Angebot von einem Fachbetrieb?</summary>
-          <p>Der Rechner selbst erstellt kein Angebot, liefert aber eine solide Entscheidungsbasis. Für konkrete Angebote sollten Sie lokale Fachbetriebe mit den Ergebnissen vergleichen.</p>
-        </details>
-        <details>
-          <summary>Ist der Rechner auch für Altbauten sinnvoll?</summary>
-          <p>Ja. Gerade im Bestand hilft der Rechner, die Größenordnung und Förderwirkung vorab realistisch einzuordnen.</p>
-        </details>
-        <details>
-          <summary>Welche Daten werden gespeichert?</summary>
-          <p>Es werden nur die von Ihnen eingegebenen Rechendaten im Browser verarbeitet. Es erfolgt keine automatische Übertragung an einen Lead- oder Kontakt-Endpunkt.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- AD PLACEHOLDER: Bottom slot before footer -->
-  <section class="section" style="padding-top:0;padding-bottom:30px;">
-    <div class="container">
-      <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 3">Anzeige (Platzhalter · Footer-nah)</div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:8px;">
-    <div class="container">
-      <div class="cta-band">
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
         <div>
-          <h2 style="font-size:clamp(1.3rem,3vw,2rem);margin-bottom:8px;">Nächster Schritt: mit den Ergebnissen weiterplanen</h2>
-          <p>Nutzen Sie die Werte aus dem Rechner für Ihren Förderabgleich und den Vergleich von Fachbetriebsangeboten.</p>
+          <div class="eyebrow">Wärmepumpen-Rechner 2026 · Fördercheck</div>
+          <h1>Ihr klarer Kosten- und Förderrahmen für die neue Wärmepumpe.</h1>
+          <p class="lead">In unter 2 Minuten sehen Sie, mit welchem Investitionsrahmen Sie rechnen können, welche Förderung realistisch ist und welche Einsparung im Betrieb möglich wird.</p>
+          <div class="hero-actions">
+            <a href="#rechner" class="btn primary">Rechner starten</a>
+            <a href="#foerderung" class="btn secondary">Förderung prüfen</a>
+            <a href="#vergleich" class="btn secondary">Vergleich ansehen</a>
+          </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="#rechner" class="btn primary">Rechner erneut starten</a>
-          <a href="#foerderung" class="btn secondary">Förderung prüfen</a>
+        <aside class="glass-card hero-card">
+          <h3>Schnellcheck auf einen Blick</h3>
+          <div class="mini-row"><span>Durchschnittlicher Invest (brutto)</span><strong class="metric">24.000–38.000 €</strong></div>
+          <div class="mini-row"><span>Möglicher Förderrahmen</span><strong class="metric">30–55 %</strong></div>
+          <div class="mini-row"><span>Typische Heizkostenreduktion</span><strong class="metric">20–45 %</strong></div>
+          <div class="mini-row"><span>Nutzbar ohne Registrierung</span><strong class="metric">Sofort online</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-wrap">
+        <div class="trust-item">Förderlogik integriert</div>
+        <div class="trust-item">Transparente Methodik</div>
+        <div class="trust-item">Kostenfrei nutzbar</div>
+        <div class="trust-item">Vercel-ready Setup</div>
+      </div>
+    </section>
+
+    <section class="section" id="foerderung">
+      <div class="container">
+        <div class="section-head">
+          <h2>Wofür der Rechner gemacht ist</h2>
+          <p>Klare Struktur mit direktem Nutzen: Kostenrahmen einschätzen, Förderwirkung verstehen und technische Optionen vergleichen.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit">
+            <h3>1) Investitionsrahmen</h3>
+            <p>Sie sehen einen realistischen Korridor für Anschaffung & Installation – passend zu Fläche, Gebäudeart und Systemwahl.</p>
+          </article>
+          <article class="benefit">
+            <h3>2) Fördercheck</h3>
+            <p>Der Rechner ergänzt den Brutto-Rahmen um mögliche Förderanteile und zeigt den erwartbaren Netto-Aufwand.</p>
+          </article>
+          <article class="benefit" id="vergleich">
+            <h3>3) Vergleichshilfe</h3>
+            <p>Luft-Wasser und Sole-Wasser lassen sich über Kosten- und Einsparungswirkung direkt gegenüberstellen.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section" style="padding-top:0;padding-bottom:30px;">
+      <div class="container">
+        <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 1">Anzeige (Platzhalter · In-Content)</div>
+      </div>
+    </section>
+
+    <section id="rechner" class="section" style="padding-top:30px;">
+      <div class="container calc-wrap">
+        <div class="panel">
+          <div class="section-head" style="margin-bottom:20px">
+            <h2>Wärmepumpen-Rechner</h2>
+            <p>Geben Sie Ihre Eckdaten an. Die Berechnung aktualisiert sich direkt.</p>
+          </div>
+          <form id="calcForm" class="form-grid" novalidate>
+            <div>
+              <label for="building">Gebäudetyp</label>
+              <select id="building" name="building">
+                <option value="bestand">Bestandsbau</option>
+                <option value="teilsaniert">Teilsaniert</option>
+                <option value="neubau">Neubau</option>
+              </select>
+            </div>
+            <div>
+              <label for="size">Wohnfläche (m²)</label>
+              <input id="size" name="size" type="number" min="50" max="450" value="150" />
+            </div>
+            <div>
+              <label for="system">Wärmepumpen-System</label>
+              <select id="system" name="system">
+                <option value="luft">Luft-Wasser</option>
+                <option value="sole">Sole-Wasser</option>
+              </select>
+            </div>
+            <div>
+              <label for="replace">Ersetzt wird</label>
+              <select id="replace" name="replace">
+                <option value="gas">Gasheizung</option>
+                <option value="oel">Ölheizung</option>
+                <option value="alt">Andere Altanlage</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <aside class="glass-card">
+          <h3 style="margin:0 0 14px;font-size:1.35rem;">Ihr Ergebnis</h3>
+          <div class="result-item"><span>Brutto-Investitionsrahmen</span><strong id="gross" class="big">-</strong></div>
+          <div class="result-item"><span>Mögliche Förderung</span><strong id="grant" class="big">-</strong></div>
+          <div class="result-item"><span>Netto-Rahmen</span><strong id="net" class="big">-</strong></div>
+          <div class="result-item"><span>Jährliche Einsparung (Schätzung)</span><strong id="save" class="big">-</strong></div>
+          <p style="font-size:13px;margin-top:8px;">Hinweis: Orientierungshilfe, kein verbindliches Angebot.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:8px;padding-bottom:24px;">
+      <div class="container">
+        <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 2">Anzeige (Platzhalter · Nach dem Rechner)</div>
+      </div>
+    </section>
+
+    <section class="section" id="methodik" style="padding-top:20px;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Methodik & Nachvollziehbarkeit</h2>
+          <p>Die Kennzahlen basieren auf typischen Marktspannen und dienen als strukturierte Erstorientierung für Eigentümer.</p>
+        </div>
+        <div class="method-grid">
+          <div class="method-step"><span class="num">1</span><h3>Eingabedaten</h3><p>Gebäudetyp, Fläche, Systemwahl und aktuelles Heizsystem steuern die Kostenspanne.</p></div>
+          <div class="method-step"><span class="num">2</span><h3>Förderkorridor</h3><p>Je nach Konstellation wird ein prozentualer Förderkorridor auf den Bruttobetrag angewendet.</p></div>
+          <div class="method-step"><span class="num">3</span><h3>Netto & Betrieb</h3><p>Der Netto-Rahmen und eine grobe Einsparung p.a. helfen bei einer fundierten Erstentscheidung.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" style="padding-top:20px;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Häufige Fragen</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Wie schnell bekomme ich ein konkretes Angebot von einem Fachbetrieb?</summary>
+            <p>Der Rechner selbst erstellt kein Angebot, liefert aber eine solide Entscheidungsbasis. Für konkrete Angebote sollten Sie lokale Fachbetriebe mit den Ergebnissen vergleichen.</p>
+          </details>
+          <details>
+            <summary>Ist der Rechner auch für Altbauten sinnvoll?</summary>
+            <p>Ja. Gerade im Bestand hilft der Rechner, die Größenordnung und Förderwirkung vorab realistisch einzuordnen.</p>
+          </details>
+          <details>
+            <summary>Welche Daten werden gespeichert?</summary>
+            <p>Es werden nur die von Ihnen eingegebenen Rechendaten im Browser verarbeitet. Es erfolgt keine automatische Übertragung an einen Lead- oder Kontakt-Endpunkt.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;padding-bottom:30px;">
+      <div class="container">
+        <div class="ad-slot" aria-label="Werbeplatzhalter Bereich 3">Anzeige (Platzhalter · Footer-nah)</div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:8px;">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 style="font-size:clamp(1.3rem,3vw,2rem);margin-bottom:8px;">Nächster Schritt: mit den Ergebnissen weiterplanen</h2>
+            <p>Nutzen Sie die Werte aus dem Rechner für Ihren Förderabgleich und den Vergleich von Fachbetriebsangeboten.</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#rechner" class="btn primary">Rechner erneut starten</a>
+            <a href="#foerderung" class="btn secondary" style="color:#0f172a;background:#fff;border-color:#e4ebf8;">Förderung prüfen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-      <span>© 2026 Wärmepumpen-Rechner</span>
-      <span>Content-first, leichtgewichtig, Vercel-ready</span>
+    <div class="container">
+      <div class="footer-top">
+        <span>© 2026 Wärmepumpen-Rechner</span>
+        <span>Content-first, leichtgewichtig, Vercel-ready</span>
+      </div>
+      <nav class="footer-links" aria-label="Rechtliche Hinweise">
+        <a href="/cookies.html">Cookies</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/impressum.html">Impressum</a>
+      </nav>
     </div>
   </footer>
 
